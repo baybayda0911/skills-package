@@ -1,0 +1,4 @@
+interface:
+  display_name: "通用完善构思"
+  short_description: "逐轮澄清各类想法，形成可审阅方案，仅按确认与授权落地"
+  default_prompt: "请使用 $idea-refiner 完善我的构思。先沿用我已提供的信息，逐轮澄清关键选择，形成范围明确、可以检验的方案；未经确认和实施授权，不开始落地。"

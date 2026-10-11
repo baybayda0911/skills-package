@@ -1,0 +1,24 @@
+# 本机配置与凭据；如确需配置示例，另提供不含真实值的示例文件。
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# 临时输出、缓存及本地环境，不排除有效测试源码。
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+.cache/
+logs/
+*.log
+*.tmp
+*.bak
+
+# 系统产生的文件。
+.DS_Store
+Thumbs.db
+Desktop.ini
