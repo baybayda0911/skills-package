@@ -53,6 +53,8 @@ git clone https://github.com/baybayda0911/skills-package.git
 本次只讨论并形成方案，不开始实施。
 ```
 
+在已安装且支持技能发现的助手中，也可以直接说“使用完善构思技能”或“使用 idea refiner”，再说明你的想法；两者均指 `idea-refiner`，不改变规范技能标识。
+
 不支持上述调用方式、但能读取文件的助手，可以这样使用：
 
 ```text
