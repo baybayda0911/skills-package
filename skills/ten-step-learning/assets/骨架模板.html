@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{领域}} - 十步法速览骨架</title>
+  <!--
+    ============================================================
+    十步法速览骨架模板 v1.1
+    ============================================================
+    用途：精研之前的「前置检查点」。本阶段不出完整报告，
+         只出骨架 + 覆盖率校验 + 样品，供门外汉用户确认。
+    使用要点：
+    1. CSS 与 assets/报告模板.html 完全同源，不得改动变量名与类名。
+    2. 骨架阶段绝对不要写满十步内容——写满就等于把「浅」固化。
+    3. 第 3、4 步必须做到完整精研深度（这是「样品」），其余九步只写骨架。
+    4. 末尾「确认三问」必须原样保留——只问用户答得出的问题。
+    5. 删除本注释块后再交付。
+  -->
+  <style>
+    :root{
+      --bg:#f6f8fc;--card:#ffffff;--soft:#eef4ff;--text:#1f2937;--muted:#667085;
+      --line:#d9e2f1;--accent:#2457ff;--accent2:#5d85ff;--ok:#157347;--warn:#9a6700;
+      --risk:#b42318;--shadow:0 10px 30px rgba(27,39,94,.08);--radius:20px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.72}
+    .page{max-width:1120px;margin:0 auto;padding:28px 20px 56px}
+    .hero,.section{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+    .hero{padding:34px 30px 28px;background:linear-gradient(135deg,#f7faff 0%,#edf3ff 100%)}
+    .badge{display:inline-block;padding:5px 10px;border-radius:999px;background:#dfe9ff;color:var(--accent);font-size:13px;font-weight:700}
+    h1,h2,h3{line-height:1.25;margin:0 0 12px}
+    h1{font-size:36px;margin-top:14px}
+    h2{font-size:26px}
+    h3{font-size:20px;margin-top:8px}
+    p{margin:10px 0}
+    .lead{font-size:17px;color:#44516a;max-width:940px}
+    .top-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+    .metric,.mini{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 16px 14px}
+    .metric strong,.mini strong{display:block;margin-bottom:6px}
+    .section{padding:28px 24px;margin-top:18px}
+    .section-intro{color:var(--muted);margin-bottom:14px}
+    table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+    th,td{border:1px solid var(--line);padding:11px 10px;vertical-align:top;text-align:left}
+    th{background:#f3f6fc;font-weight:700}
+    .callout{background:var(--soft);border-left:4px solid var(--accent);border-radius:14px;padding:14px 16px;margin-top:14px}
+    .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:14px}
+    .code{background:#0f172a;color:#edf2ff;border-radius:16px;padding:16px;font-family:Consolas,"Courier New",monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;margin-top:12px}
+    ul,ol{margin:8px 0 0 22px}
+    li{margin:6px 0}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{border:1px solid #d6e1ff;background:#f5f8ff;color:#2b4c9a;border-radius:999px;padding:6px 11px;font-size:13px}
+    .ok{color:var(--ok);font-weight:700}
+    .warn{color:var(--warn);font-weight:700}
+    .risk{color:var(--risk);font-weight:700}
+    .footnotes{font-size:13px;color:#49556b}
+    .footnotes li{margin:8px 0}
+    a{color:var(--accent);text-decoration:none}
+    .footer-note{margin-top:16px;color:var(--muted);font-size:13px}
+    @media (max-width:900px){.top-grid,.cols{grid-template-columns:1fr}h1{font-size:30px}h2{font-size:24px}}
+
+    /* ===== v1.1 追加组件 ===== */
+    .cite{color:var(--accent);font-size:11px;font-weight:700;vertical-align:super;margin-left:2px}
+    .tier{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:700;border:1px solid var(--line);margin:0 4px 4px 0}
+    .tier-base{background:#f2f6ff;color:#2b4c9a;border-color:#d6e1ff}
+    .tier-pro{background:#e8f6ee;color:var(--ok);border-color:#bfe3cd}
+    .tier-exp{background:#fdf3e3;color:var(--warn);border-color:#eddcb5}
+    .selfweak{background:#fbfbfd;border-left:4px solid var(--muted);border-radius:14px;padding:14px 16px;margin-top:14px;font-size:14px}
+    .ask{background:#f4f8ff;border:1px solid #cfdefc;border-left:4px solid var(--accent);border-radius:16px;padding:18px 20px;margin-top:18px}
+    .ask ol{margin-left:20px}
+    .ask li{margin:12px 0}
+    .sample{outline:3px dashed var(--accent2);outline-offset:6px}
+    .sample-tag{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700;margin-bottom:10px}
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <span class="badge">十步法 · 速览骨架</span>
+      <h1>{{领域}}</h1>
+      <p class="lead">{{3~4 句：这个领域在做什么、谁在做、最关键约束是什么}}。本页是正式精研之前的检查点——先对齐方向，再投入深度。</p>
+      <div class="top-grid">
+        <div class="metric"><strong>目标档位</strong>{{入门 / 专业 / 专家}}{{，并说明为什么建议这一档}}</div>
+        <div class="metric"><strong>你的起点</strong>{{...}}{{，以及它如何影响地图起点}}</div>
+        <div class="metric"><strong>验收标尺</strong>{{N}} 条真实任务项来自{{锚定物}}，覆盖率合格线 85%</div>
+      </div>
+      <div class="chips">
+        <span class="chip">领域类型：{{职业型 / 学术型 / 商业型}}</span>
+        <span class="chip">锚定物：{{JD+考纲 / 课程大纲+教材 / 行业报告+复盘}}</span>
+        <span class="chip">预计判据总数：{{N}}</span>
+        <span class="chip">{{高风险领域：是/否}}</span>
+      </div>
+    </header>
+
+    <!-- ===== 块 1：覆盖率校验 ===== -->
+    <section class="section">
+      <h2>一、覆盖率校验</h2>
+      <p class="section-intro">标尺来自「{{锚定物描述}}」。你不需要判断内容对不对，只需要看覆盖率和未覆盖的那几条。</p>
+      <table>
+        <thead><tr><th>#</th><th>真实任务项</th><th>覆盖判定</th><th>说明 / 未覆盖理由</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>{{任务项}}</td><td><span class="ok">覆盖</span></td><td>{{落在第几步}}</td></tr>
+          <tr><td>2</td><td>{{任务项}}</td><td><span class="warn">部分覆盖</span></td><td>{{只到概念层，未到能做的程度}}</td></tr>
+          <tr><td>3</td><td>{{任务项}}</td><td><span class="risk">未覆盖</span></td><td>{{超出目标档位 / 属于另一分支 / 确实缺失}}</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>覆盖率：{{NN}} / {{NN}} = {{NN%}}</strong>（合格线 85%）<br>{{若为 100%，此处另列至少 3 条边界项说明为何算覆盖}}</div>
+    </section>
+
+    <!-- ===== 块 2：十步骨架 ===== -->
+    <section class="section">
+      <h2>二、十步骨架</h2>
+      <p class="section-intro">每步只给：一句话定位、必答问题预览、三档落点、预计判据数、自曝弱点。**此处不写正文**——写满就等于把「浅」固化。</p>
+      <table>
+        <thead><tr><th>步</th><th>一句话定位</th><th>必答问题预览</th><th>三档落点</th><th>预计判据</th><th>自曝弱点：若这步设计错了，最可能错在哪</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td><td>{{...}}</td><td>{{列 5~8 问的短形式}}</td>
+            <td><span class="tier tier-base">入门</span><span class="tier tier-pro">专业</span><span class="tier tier-exp">专家</span>{{标注本次做到哪档}}</td>
+            <td>{{N}} 条</td><td>{{...}}{{什么信号说明该推翻它}}</td>
+          </tr>
+          <tr>
+            <td>2</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td>3</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td>4</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td>5</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td>6</td><td>难度标尺定义处（三档在此定义一次，后续各步引用）</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td>7</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td>8</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td>9</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td>10</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{N}} 条</td><td>{{...}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===== 块 3：样品（第 3、4 步做满深度） ===== -->
+    <section class="section sample">
+      <span class="sample-tag">样品 · 试吃</span>
+      <h2>三、样品：第 3 步 + 第 4 步（已做满精研深度）</h2>
+      <p class="section-intro">这两步是全篇最能代表深度与味道的部分。看它们，你就能判断「这个颗粒度、这个深度是不是你要的」——比审一份蓝图容易得多。</p>
+
+      <h3>第 3 步 · 精简简报</h3>
+      <p><strong>60 秒讲稿</strong>：{{完整写，含三要素}}</p>
+      <table>
+        <thead><tr><th>排序</th><th>关键发现</th><th>可信度依据（具体来源+年份）</th><th>反方最强观点</th><th>适用边界/失效条件</th><th>类型</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>{{...}}</td><td>{{带角标 [n]}}</td><td>{{...}}</td><td>{{...}}</td><td>{{事实/推断/经验/待验证}}</td></tr>
+        </tbody>
+      </table>
+
+      <h3>第 4 步 · 靠谱度评分</h3>
+      <p class="section-intro">锚点：10=一手官方文件明确支持｜7=有第二个独立来源交叉验证｜4=仅有单一从业者经验陈述｜1=纯推测</p>
+      <table>
+        <thead><tr><th>发现</th><th>分数</th><th>命中锚点</th><th>扣分项</th><th>补什么可加分</th><th>最强反证</th></tr></thead>
+        <tbody>
+          <tr><td>{{...}}</td><td>{{N}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">样品已完成。**如果这个颗粒度不是你要的，现在就改档位或改方向——比精研完再推翻便宜得多。**</div>
+    </section>
+
+    <!-- ===== 块 4：确认三问 ===== -->
+    <div class="ask">
+      <h2>四、请你确认（只问三个你答得出的问题）</h2>
+      <p class="section-intro">你不需要判断内容对错——那是我的活。你只需要回答下面三个问题。</p>
+      <ol>
+        <li><strong>上限够不够？</strong> 三档难度里，本次计划做到 <strong>{{档位}}</strong> 档（上表已标）。这个天花板是不是你要的？要更高还是更低？</li>
+        <li><strong>有没有你不想要的步骤？</strong> 十步里哪几步你觉得没必要（可以直接砍掉或压缩）？</li>
+        <li><strong>有没有你特别在意却漏掉的？</strong> 上面 {{N}} 条任务项里，有没有你真正关心的事没被覆盖？如果说不出来，可以只看标「未覆盖」的那 {{N}} 条。</li>
+      </ol>
+      <p>回复方式：直接说「都行，开始精研」，或者告诉我上面三个问题里要改哪一条。也可以按步骤打回某一步的骨架重画。</p>
+    </div>
+
+    <section class="section footnotes">
+      <h2>本页依据</h2>
+      <ol>
+        <li>{{锚定物来源 1}} <span class="chip">官方/一手</span></li>
+        <li>{{锚定物来源 2}} <span class="chip">教材</span></li>
+        <li>{{锚定物来源 3}} <span class="chip">从业者一手</span></li>
+        <li>{{锚定物来源 4}} <span class="chip">反向材料</span></li>
+      </ol>
+      <div class="footer-note">骨架生成日期：{{YYYY-MM-DD}}｜精研前必须完成本页确认</div>
+    </section>
+
+  </div>
+</body>
+</html>

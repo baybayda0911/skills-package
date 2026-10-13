@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{领域}} - 十步法学习报告</title>
+  <!--
+    ============================================================
+    十步法学习报告 · 精研档模板 v1.1
+    ============================================================
+    使用说明：
+    1. 本模板的 CSS 是从 v1.0 实际产出物中提取的「统一皮肤」，
+       变量名与类名一律不得改动（--bg/--card/--soft/--text/--accent/
+       --ok/--warn/--risk + .page/.hero/.badge/.top-grid/.callout/
+       .chip/.cols/.mini/.footnotes）。新增组件只能追加，不得替换。
+    2. 填充位置一律用 {{双花括号}} 标记；不要保留任何 {{}} 到最终产物。
+    3. 自包含要求：禁止 CDN、外链图片、外部字体。
+       「参考来源」里指向外部网页的超链接是内容，允许保留。
+    4. 交付前必须过一遍 references/深度标准.md 第 6 节的交付自检清单。
+    5. 删除本注释块后再交付。
+  -->
+  <style>
+    :root{
+      --bg:#f6f8fc;
+      --card:#ffffff;
+      --soft:#eef4ff;
+      --text:#1f2937;
+      --muted:#667085;
+      --line:#d9e2f1;
+      --accent:#2457ff;
+      --accent2:#5d85ff;
+      --ok:#157347;
+      --warn:#9a6700;
+      --risk:#b42318;
+      --shadow:0 10px 30px rgba(27,39,94,.08);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.72;
+    }
+    .page{max-width:1120px;margin:0 auto;padding:28px 20px 56px}
+    .hero,.section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+    }
+    .hero{
+      padding:34px 30px 28px;
+      background:linear-gradient(135deg,#f7faff 0%,#edf3ff 100%);
+    }
+    .badge{
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      background:#dfe9ff;
+      color:var(--accent);
+      font-size:13px;
+      font-weight:700;
+    }
+    h1,h2,h3{line-height:1.25;margin:0 0 12px}
+    h1{font-size:36px;margin-top:14px}
+    h2{font-size:26px}
+    h3{font-size:20px;margin-top:8px}
+    p{margin:10px 0}
+    .lead{font-size:17px;color:#44516a;max-width:940px}
+    .top-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+    .metric,.mini{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px 16px 14px;
+    }
+    .metric strong,.mini strong{display:block;margin-bottom:6px}
+    .section{padding:28px 24px;margin-top:18px}
+    .section-intro{color:var(--muted);margin-bottom:14px}
+    table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+    th,td{border:1px solid var(--line);padding:11px 10px;vertical-align:top;text-align:left}
+    th{background:#f3f6fc;font-weight:700}
+    .callout{
+      background:var(--soft);
+      border-left:4px solid var(--accent);
+      border-radius:14px;
+      padding:14px 16px;
+      margin-top:14px;
+    }
+    .cols{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+      margin-top:14px;
+    }
+    .code{
+      background:#0f172a;
+      color:#edf2ff;
+      border-radius:16px;
+      padding:16px;
+      font-family:Consolas,"Courier New",monospace;
+      font-size:13px;
+      line-height:1.6;
+      white-space:pre-wrap;
+      margin-top:12px;
+    }
+    ul,ol{margin:8px 0 0 22px}
+    li{margin:6px 0}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{
+      border:1px solid #d6e1ff;
+      background:#f5f8ff;
+      color:#2b4c9a;
+      border-radius:999px;
+      padding:6px 11px;
+      font-size:13px;
+    }
+    .ok{color:var(--ok);font-weight:700}
+    .warn{color:var(--warn);font-weight:700}
+    .risk{color:var(--risk);font-weight:700}
+    .footnotes{font-size:13px;color:#49556b}
+    .footnotes li{margin:8px 0}
+    a{color:var(--accent);text-decoration:none}
+    .footer-note{margin-top:16px;color:var(--muted);font-size:13px}
+    @media (max-width:900px){
+      .top-grid,.cols{grid-template-columns:1fr}
+      h1{font-size:30px}
+      h2{font-size:24px}
+    }
+
+    /* ===== v1.1 追加组件（仅新增，不修改上方任何规则）===== */
+    .cite{
+      color:var(--accent);
+      font-size:11px;
+      font-weight:700;
+      vertical-align:super;
+      margin-left:2px;
+    }
+    .tier{
+      display:inline-block;
+      border-radius:999px;
+      padding:2px 9px;
+      font-size:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      margin:0 4px 4px 0;
+    }
+    .tier-base{background:#f2f6ff;color:#2b4c9a;border-color:#d6e1ff}
+    .tier-pro{background:#e8f6ee;color:var(--ok);border-color:#bfe3cd}
+    .tier-exp{background:#fdf3e3;color:var(--warn);border-color:#eddcb5}
+    .counter{background:#fdecea;border-left:4px solid var(--risk);border-radius:14px;padding:14px 16px;margin-top:14px}
+    .selfweak{background:#fbfbfd;border-left:4px solid var(--muted);border-radius:14px;padding:14px 16px;margin-top:14px;font-size:14px}
+    .disclaimer{background:#fff8f8;border:1px solid #f3d6d3;border-left:4px solid var(--risk);border-radius:14px;padding:16px;margin-top:18px;font-size:14px}
+    .judge{font-size:13px;color:#49556b}
+    .density{margin-top:14px;font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ============ hero 封面（收编自 v1.0 实际产出） ============ -->
+    <header class="hero">
+      <span class="badge">十步法学习报告</span>
+      <h1>{{领域}}</h1>
+      <!-- lead：3~5 句，必须含「这个领域在做什么、谁在做、最关键的约束」三要素，且带角标 -->
+      <p class="lead">{{领域全貌概述，含关键约束，带角标 [n]}}</p>
+      <div class="top-grid">
+        <div class="metric"><strong>先学什么</strong>{{...}}</div>
+        <div class="metric"><strong>主线判断</strong>{{...}}</div>
+        <div class="metric"><strong>门槛与约束</strong>{{含具体数字，带角标}}</div>
+      </div>
+      <div class="chips">
+        <span class="chip">目标档位：{{入门 / 专业 / 专家}}</span>
+        <span class="chip">起点：{{...}}</span>
+        <span class="chip">用途：{{...}}</span>
+        <span class="chip">判据总数：{{N}} 条</span>
+        <span class="chip">反例：{{N}} 条</span>
+      </div>
+    </header>
+
+    <!-- ============ 覆盖率校验（v1.1 新增，可追溯专业度） ============ -->
+    <section class="section">
+      <h2>覆盖率校验</h2>
+      <p class="section-intro">以「{{锚定物描述，例：3 家公司的初级岗位 JD + 从业资格考纲}}」抽出的 {{N}} 条真实任务项为标尺，逐条核对本报告的覆盖情况。</p>
+      <table>
+        <thead>
+          <tr><th>#</th><th>任务项</th><th>覆盖判定</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>{{任务项}}</td><td><span class="ok">覆盖</span></td><td>{{对应第几步 / 出处}}</td></tr>
+          <tr><td>2</td><td>{{任务项}}</td><td><span class="warn">部分覆盖</span></td><td>{{只讲了概念，未到能做的程度}}</td></tr>
+          <tr><td>3</td><td>{{任务项}}</td><td><span class="risk">未覆盖</span></td><td>{{理由：超出目标档位 / 属于另一分支 / 确实缺失}}</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>覆盖率：{{NN}} / {{NN}} = {{NN%}}</strong>（合格线 85%）{{若为 100%，须另列至少 3 条边界项说明为何算覆盖}}</div>
+    </section>
+
+    <!-- ============ 先看全貌（收编自 v1.0 实际产出） ============ -->
+    <section class="section">
+      <h2>先看全貌</h2>
+      <p class="section-intro">{{一句话导语}}</p>
+      <table>
+        <thead><tr><th>{{维度}}</th><th>{{维度}}</th><th>{{维度}}</th><th>{{维度}}</th></tr></thead>
+        <tbody>
+          <tr><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
+        </tbody>
+      </table>
+      <div class="chips"><span class="chip">{{关键标签}}</span></div>
+      <p>{{一条必须先记住的关键边界，带角标}}</p>
+    </section>
+
+    <!-- ============ 第 1 步 五类专家视角 ============ -->
+    <section class="section">
+      <h2>第 1 步</h2>
+      <p class="section-intro">用五种利益立场看同一件事，而不是用五种语气说同一句话。</p>
+      <table>
+        <thead><tr><th>角色</th><th>立场</th><th>核心证据（含来源与可核验等级）</th><th>专属隐藏信息（含获取方式）</th><th>利益来源</th></tr></thead>
+        <tbody>
+          <tr><td>实践者</td><td>{{...}}</td><td>{{必须具体，带角标}}</td><td>{{必须说明如何获得}}</td><td>{{谁付钱给他}}</td></tr>
+          <tr><td>研究者</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
+          <tr><td>怀疑者</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
+          <tr><td>经济学家</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
+          <tr><td>历史学家</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>跨角色分歧</strong>：{{至少 2 组，说明哪一方证据更强、强在哪}}</div>
+      <div class="selfweak"><strong>沉默的相关方</strong>：{{影响很大但在这类讨论里不发声的是谁，其缺席如何扭曲了主流叙事}}</div>
+      <p class="density">本步判据数：{{N}}（下限 5）｜反例：{{N}}（下限 1）</p>
+    </section>
+
+    <!-- ============ 第 2 步 矛盾清单 ============ -->
+    <section class="section">
+      <h2>第 2 步</h2>
+      <p class="section-intro">找出真实分歧，并判断现阶段哪边证据更强。</p>
+      <table>
+        <thead><tr><th>矛盾点</th><th>冲突双方及其主张</th><th>双方最强证据（来源 / 年份 / 样本量）</th><th>证据等级与判定依据</th><th>共识点（区分已证实 / 未被质疑）</th><th>行业盲区及长期未解原因</th></tr></thead>
+        <tbody>
+          <tr><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
+        </tbody>
+      </table>
+      <div class="counter"><strong>近 3~5 年被推翻或修正的分歧</strong>：{{...}}<br><strong>属于术语之争的分歧</strong>：{{...}}</div>
+      <p class="density">本步判据数：{{N}}｜反例：{{N}}｜最少 5 组真实分歧</p>
+    </section>
+
+    <!-- ============ 第 3 步 精简简报 ============ -->
+    <section class="section">
+      <h2>第 3 步</h2>
+      <p class="section-intro">一份可以直接拿去汇报或复述的精简版，但每句都要有依据。</p>
+      <h3>60 秒讲稿</h3>
+      <p>{{必须含三要素：这个领域在做什么 / 谁在做 / 最关键的约束}}</p>
+
+      <h3>按可信度排序的 5 条关键发现</h3>
+      <table>
+        <thead><tr><th>排序</th><th>关键发现</th><th>可信度依据（具体来源 + 年份）</th><th>反方最强观点</th><th>适用边界 / 失效条件</th><th>类型</th><th>落地动作（何时·做什么·做到什么程度）</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>{{...}}</td><td>{{禁止空话，带角标}}</td><td>{{...}}</td><td>{{...}}</td><td>事实/推断/经验/待验证</td><td>{{...}}</td></tr>
+        </tbody>
+      </table>
+      <div class="selfweak"><strong>只保留一条的话</strong>：{{哪条、为什么}}<br><strong>最可能在 12 个月后失效的一条</strong>：{{哪条、监测什么信号}}</div>
+      <p class="density">本步判据数：{{N}}（下限 8）｜反例：{{N}}</p>
+    </section>
+
+    <!-- ============ 第 4 步 靠谱度评分 ============ -->
+    <section class="section">
+      <h2>第 4 步</h2>
+      <p class="section-intro">锚点：10=一手官方文件明确支持｜7=有第二个独立来源交叉验证｜4=仅有单一从业者经验陈述｜1=纯推测。</p>
+      <table>
+        <thead><tr><th>发现</th><th>分数</th><th>命中锚点</th><th>扣分项</th><th>补什么可加分（具体文件/数据）</th><th>谁有动机让你相信</th><th>最强反证</th><th>状态</th></tr></thead>
+        <tbody>
+          <tr><td>{{...}}</td><td>{{N}}</td><td>{{10/7/4/1}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td><span class="ok">可直接采用</span> / <span class="warn">建议补验证</span> / <span class="risk">待验证</span></td></tr>
+        </tbody>
+      </table>
+      <p class="density">本步判据数：{{N}}（下限 8）｜每个分数必须能由锚点复现（禁止裸评分）</p>
+    </section>
+
+    <!-- ============ 第 5 步 一周学习路线 ============ -->
+    <section class="section">
+      <h2>第 5 步</h2>
+      <p class="section-intro">一周只看最值得看的 5 份资料，并且知道为什么是它们。</p>
+      <table>
+        <thead><tr><th>资料</th><th>发布方 / 时间 / 利益立场</th><th>核心结论</th><th>谁在反驳、反驳得动吗</th><th>数据截止时间</th><th>已过时/被推翻的部分</th><th>读完能回答哪些新问题</th><th>适合哪天看</th><th>产出物</th></tr></thead>
+        <tbody>
+          <tr><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>第 {{N}} 天</td><td>{{可检验物}}</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>来源品类自检</strong>：官方/一手 {{≥40%}}｜教材 {{≥20%}}｜从业者一手 {{≥20%}}｜反向材料 {{≥10%}}</div>
+      <h3>一周学习路线</h3>
+      <div class="cols">
+        <div class="mini"><strong>第 1 天</strong>{{...}}</div>
+        <div class="mini"><strong>第 2 天</strong>{{...}}</div>
+        <div class="mini"><strong>第 3 天</strong>{{...}}</div>
+        <div class="mini"><strong>第 4 天</strong>{{...}}</div>
+        <div class="mini"><strong>第 5 天</strong>{{...}}</div>
+        <div class="mini"><strong>第 6 天</strong>{{...}}</div>
+        <div class="mini"><strong>第 7 天</strong>{{...}}</div>
+      </div>
+      <p class="density">本步判据数：{{N}}（下限 8）｜每份资料至少 1 个具体判据（年份/版次/章节/编号）</p>
+    </section>
+
+    <!-- ============ 第 6 步 难度标尺定义章节 ============ -->
+    <section class="section">
+      <h2>第 6 步 · 难度标尺</h2>
+      <p class="section-intro">这是整份报告唯一的难度定义处。后面每一步提到「入门 / 专业 / 专家」时，都引用这里的定义，不另行解释。</p>
+      <table>
+        <thead><tr><th>档位</th><th>能力判据</th><th>可检验产出物</th><th>通过线（数字/条件）</th><th>错误容忍度</th><th>典型失败者画像</th><th>判据来源（外部锚定物）</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="tier tier-base">入门</span></td>
+            <td>能复述机制与规则边界，能识别常见误区</td>
+            <td>{{一件能被检验的事/物}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td><span class="tier tier-pro">专业</span></td>
+            <td>能独立完成一次标准操作与规范计算</td>
+            <td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td>
+          </tr>
+          <tr>
+            <td><span class="tier tier-exp">专家</span></td>
+            <td>能在信息不全或异常情形下做出判断并说明理由</td>
+            <td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>本次目标档位</strong>：{{...}}｜<strong>可复现性</strong>：换一个第三方来判定，是否得出同样结论——{{是/否，为什么}}</div>
+      <h3>各档自测题（题型配额：情景 ≥40% / 计算 ≥30% / 概念 ≤30%）</h3>
+      <table>
+        <thead><tr><th>档位</th><th>自测题</th><th>题型</th><th>判分点</th><th>典型错误答案样例</th></tr></thead>
+        <tbody>
+          <tr><td>{{...}}</td><td>{{...}}</td><td>情景/计算/概念</td><td>{{...}}</td><td>{{...}}</td></tr>
+        </tbody>
+      </table>
+      <p class="density">本步判据数：{{N}}（下限 8）｜禁止「能说出…」这类句式而不给通过线</p>
+    </section>
+
+    <!-- ============ 第 7 步 20 小时攻坚 ============ -->
+    <section class="section">
+      <h2>第 7 步</h2>
+      <p class="section-intro">把核心内容压进约 20 小时，并给出一个能检验真实能力的实战项目。</p>
+      <table>
+        <thead><tr><th>时间</th><th>内容</th><th>对应能力点（分配依据）</th><th>产出物（可检验物）</th><th>达标线</th><th>卡住的解锁条件</th></tr></thead>
+        <tbody>
+          <tr><td>{{N-N 小时}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <strong>最小实战项目</strong><br>
+        {{项目描述}}<br><br>
+        <strong>合格标准（写死）</strong>：{{达到什么算过、什么算没过}}<br>
+        <strong>它检验了什么</strong>：① 是否懂基本结构——{{怎么检验}} ② 是否能处理真实案例——{{怎么检验}} ③ 是否能输出自己的初步判断——{{怎么检验}}<br>
+        <strong>失败了怎么办</strong>：{{迭代路径}}
+      </div>
+      <p class="density">本步判据数：{{N}}（下限 8）｜产出物不得只是名词</p>
+    </section>
+
+    <!-- ============ 第 8 步 考官模式 ============ -->
+    <section class="section">
+      <h2>第 8 步</h2>
+      <p class="section-intro">10 题从易到难。若继续互动，可进入考官模式：一次只问一题，答错先讲解再进入下一题，进度会存档。</p>
+      <table>
+        <thead><tr><th>#</th><th>题目</th><th>题型</th><th>考核档位</th><th>对应覆盖清单任务</th><th>判分点</th><th>典型错误答案样例</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>{{...}}</td><td>情景/计算/概念</td><td>{{入门/专业/专家}}</td><td>#{{N}}</td><td>{{过/部分/没过}}</td><td>{{...}}</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>题型分布自检</strong>：情景 {{≥40%}}｜计算/动手 {{≥30%}}｜概念 {{≤30%}}｜其中能区分「看过」与「会用」的题：至少 3 道</div>
+      <p class="density">题目答案与解题路径：见下方折叠区或附录</p>
+      <div class="code">{{计算题与情景题的参考答案、解题路径}}</div>
+    </section>
+
+    <!-- ============ 第 9 步 费曼讲解 ============ -->
+    <section class="section">
+      <h2>第 9 步</h2>
+      <p class="section-intro">用 12 岁小孩能听懂的话讲一遍。</p>
+      <h3>费曼讲解</h3>
+      <p>{{这是什么 / 为什么存在 / 怎么运转 / 哪里会出错}}</p>
+      <div class="selfweak"><strong>类比的失效边界</strong>：{{这个比喻在什么情况下会误导}}<br><strong>最容易讲错的 3 个地方</strong>：{{...}}</div>
+      <h3>复述模板</h3>
+      <div class="code">{{填空式复述模板，每个空对应一个知识点}}</div>
+      <div class="callout"><strong>复述通过标准</strong>：意思准确 + 无事实性错误 + 能说出至少一处「哪里会出错」</div>
+      <p class="density">本步判据数：{{N}}｜反例：{{N}}</p>
+    </section>
+
+    <!-- ============ 第 10 步 速查表 ============ -->
+    <section class="section">
+      <h2>第 10 步</h2>
+      <p class="section-intro">5 分钟能看完的复盘卡片，每条都带数字或条件。</p>
+      <table>
+        <thead><tr><th>项目</th><th>速记内容（必须含数字或条件）</th></tr></thead>
+        <tbody>
+          <tr><td>核心概念</td><td>{{...}}</td></tr>
+          <tr><td>关键角色</td><td>{{...}}</td></tr>
+          <tr><td>关键流程</td><td>{{...}}</td></tr>
+          <tr><td>关键指标</td><td>{{...}}</td></tr>
+          <tr><td>最常见误区</td><td>{{...}}</td></tr>
+          <tr><td>最该优先验证的问题</td><td>{{与覆盖清单未覆盖/部分覆盖项呼应}}</td></tr>
+        </tbody>
+      </table>
+      <div class="selfweak"><strong>如果只记 3 条</strong>：{{哪 3 条、为什么}}<br><strong>最容易被误记的一条</strong>：{{哪条、正确说法}}</div>
+      <div class="callout">{{一句话总括}}</div>
+    </section>
+
+    <!-- ============ 附加提醒（收编自 v1.0 实际产出） ============ -->
+    <section class="section">
+      <h2>附加提醒</h2>
+      <p>{{给初次学习者的针对性提醒，含具体路径建议}}</p>
+    </section>
+
+    <!-- ============ 免责声明（高风险领域强制；非高风险领域删除本节） ============ -->
+    <div class="disclaimer">
+      <strong>免责声明</strong><br>
+      本报告为知识学习与研究方法论材料，<strong>不构成任何投资/法律/医疗/税务建议</strong>。报告不含具体标的代码、价位、仓位数字与买卖时点，所有推演均为模拟与纸面演练。任何实际决策请咨询具备相应资质的专业人士。
+    </div>
+
+    <!-- ============ 参考来源（收编自 v1.0 实际产出，须按品类配额构成） ============ -->
+    <section class="section footnotes">
+      <h2>参考来源</h2>
+      <p class="section-intro">品类配额：官方/一手 ≥40%｜教材 ≥20%｜从业者一手 ≥20%｜反向材料 ≥10%</p>
+      <ol>
+        <li>{{发布方}}，{{文件名}}：<a href="{{URL}}" target="_blank" rel="noopener">{{URL}}</a> <span class="chip">官方/一手</span></li>
+        <li>{{...}} <span class="chip">教材</span></li>
+        <li>{{...}} <span class="chip">从业者一手</span></li>
+        <li>{{...}} <span class="chip">反向材料</span></li>
+      </ol>
+      <div class="footer-note">生成日期：{{YYYY-MM-DD}}｜目标档位：{{...}}｜未覆盖项：{{N}} 条（理由见覆盖率校验）</div>
+    </section>
+
+  </div>
+</body>
+</html>
