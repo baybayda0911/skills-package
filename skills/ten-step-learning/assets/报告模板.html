@@ -1,25 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{领域}} - 十步法学习报告</title>
-  <!--
-    ============================================================
-    十步法学习报告 · 精研档模板 v1.1
-    ============================================================
-    使用说明：
-    1. 本模板的 CSS 是从 v1.0 实际产出物中提取的「统一皮肤」，
-       变量名与类名一律不得改动（--bg/--card/--soft/--text/--accent/
-       --ok/--warn/--risk + .page/.hero/.badge/.top-grid/.callout/
-       .chip/.cols/.mini/.footnotes）。新增组件只能追加，不得替换。
-    2. 填充位置一律用 {{双花括号}} 标记；不要保留任何 {{}} 到最终产物。
-    3. 自包含要求：禁止 CDN、外链图片、外部字体。
-       「参考来源」里指向外部网页的超链接是内容，允许保留。
-    4. 交付前必须过一遍 references/深度标准.md 第 6 节的交付自检清单。
-    5. 删除本注释块后再交付。
-  -->
-  <style>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{{领域}} · 学习手册</title><style>
     :root{
       --bg:#f6f8fc;
       --card:#ffffff;
@@ -135,7 +115,7 @@
       h2{font-size:24px}
     }
 
-    /* ===== v1.1 追加组件（仅新增，不修改上方任何规则）===== */
+    /* ===== 共享视觉组件（沿用既有样式）===== */
     .cite{
       color:var(--accent);
       font-size:11px;
@@ -160,277 +140,61 @@
     .disclaimer{background:#fff8f8;border:1px solid #f3d6d3;border-left:4px solid var(--risk);border-radius:14px;padding:16px;margin-top:18px;font-size:14px}
     .judge{font-size:13px;color:#49556b}
     .density{margin-top:14px;font-size:13px;color:var(--muted)}
-  </style>
-</head>
-<body>
-  <div class="page">
 
-    <!-- ============ hero 封面（收编自 v1.0 实际产出） ============ -->
-    <header class="hero">
-      <span class="badge">十步法学习报告</span>
-      <h1>{{领域}}</h1>
-      <!-- lead：3~5 句，必须含「这个领域在做什么、谁在做、最关键的约束」三要素，且带角标 -->
-      <p class="lead">{{领域全貌概述，含关键约束，带角标 [n]}}</p>
-      <div class="top-grid">
-        <div class="metric"><strong>先学什么</strong>{{...}}</div>
-        <div class="metric"><strong>主线判断</strong>{{...}}</div>
-        <div class="metric"><strong>门槛与约束</strong>{{含具体数字，带角标}}</div>
-      </div>
-      <div class="chips">
-        <span class="chip">目标档位：{{入门 / 专业 / 专家}}</span>
-        <span class="chip">起点：{{...}}</span>
-        <span class="chip">用途：{{...}}</span>
-        <span class="chip">判据总数：{{N}} 条</span>
-        <span class="chip">反例：{{N}} 条</span>
-      </div>
-    </header>
-
-    <!-- ============ 覆盖率校验（v1.1 新增，可追溯专业度） ============ -->
-    <section class="section">
-      <h2>覆盖率校验</h2>
-      <p class="section-intro">以「{{锚定物描述，例：3 家公司的初级岗位 JD + 从业资格考纲}}」抽出的 {{N}} 条真实任务项为标尺，逐条核对本报告的覆盖情况。</p>
-      <table>
-        <thead>
-          <tr><th>#</th><th>任务项</th><th>覆盖判定</th><th>说明</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>{{任务项}}</td><td><span class="ok">覆盖</span></td><td>{{对应第几步 / 出处}}</td></tr>
-          <tr><td>2</td><td>{{任务项}}</td><td><span class="warn">部分覆盖</span></td><td>{{只讲了概念，未到能做的程度}}</td></tr>
-          <tr><td>3</td><td>{{任务项}}</td><td><span class="risk">未覆盖</span></td><td>{{理由：超出目标档位 / 属于另一分支 / 确实缺失}}</td></tr>
-        </tbody>
-      </table>
-      <div class="callout"><strong>覆盖率：{{NN}} / {{NN}} = {{NN%}}</strong>（合格线 85%）{{若为 100%，须另列至少 3 条边界项说明为何算覆盖}}</div>
-    </section>
-
-    <!-- ============ 先看全貌（收编自 v1.0 实际产出） ============ -->
-    <section class="section">
-      <h2>先看全貌</h2>
-      <p class="section-intro">{{一句话导语}}</p>
-      <table>
-        <thead><tr><th>{{维度}}</th><th>{{维度}}</th><th>{{维度}}</th><th>{{维度}}</th></tr></thead>
-        <tbody>
-          <tr><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
-        </tbody>
-      </table>
-      <div class="chips"><span class="chip">{{关键标签}}</span></div>
-      <p>{{一条必须先记住的关键边界，带角标}}</p>
-    </section>
-
-    <!-- ============ 第 1 步 五类专家视角 ============ -->
-    <section class="section">
-      <h2>第 1 步</h2>
-      <p class="section-intro">用五种利益立场看同一件事，而不是用五种语气说同一句话。</p>
-      <table>
-        <thead><tr><th>角色</th><th>立场</th><th>核心证据（含来源与可核验等级）</th><th>专属隐藏信息（含获取方式）</th><th>利益来源</th></tr></thead>
-        <tbody>
-          <tr><td>实践者</td><td>{{...}}</td><td>{{必须具体，带角标}}</td><td>{{必须说明如何获得}}</td><td>{{谁付钱给他}}</td></tr>
-          <tr><td>研究者</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
-          <tr><td>怀疑者</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
-          <tr><td>经济学家</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
-          <tr><td>历史学家</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
-        </tbody>
-      </table>
-      <div class="callout"><strong>跨角色分歧</strong>：{{至少 2 组，说明哪一方证据更强、强在哪}}</div>
-      <div class="selfweak"><strong>沉默的相关方</strong>：{{影响很大但在这类讨论里不发声的是谁，其缺席如何扭曲了主流叙事}}</div>
-      <p class="density">本步判据数：{{N}}（下限 5）｜反例：{{N}}（下限 1）</p>
-    </section>
-
-    <!-- ============ 第 2 步 矛盾清单 ============ -->
-    <section class="section">
-      <h2>第 2 步</h2>
-      <p class="section-intro">找出真实分歧，并判断现阶段哪边证据更强。</p>
-      <table>
-        <thead><tr><th>矛盾点</th><th>冲突双方及其主张</th><th>双方最强证据（来源 / 年份 / 样本量）</th><th>证据等级与判定依据</th><th>共识点（区分已证实 / 未被质疑）</th><th>行业盲区及长期未解原因</th></tr></thead>
-        <tbody>
-          <tr><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
-        </tbody>
-      </table>
-      <div class="counter"><strong>近 3~5 年被推翻或修正的分歧</strong>：{{...}}<br><strong>属于术语之争的分歧</strong>：{{...}}</div>
-      <p class="density">本步判据数：{{N}}｜反例：{{N}}｜最少 5 组真实分歧</p>
-    </section>
-
-    <!-- ============ 第 3 步 精简简报 ============ -->
-    <section class="section">
-      <h2>第 3 步</h2>
-      <p class="section-intro">一份可以直接拿去汇报或复述的精简版，但每句都要有依据。</p>
-      <h3>60 秒讲稿</h3>
-      <p>{{必须含三要素：这个领域在做什么 / 谁在做 / 最关键的约束}}</p>
-
-      <h3>按可信度排序的 5 条关键发现</h3>
-      <table>
-        <thead><tr><th>排序</th><th>关键发现</th><th>可信度依据（具体来源 + 年份）</th><th>反方最强观点</th><th>适用边界 / 失效条件</th><th>类型</th><th>落地动作（何时·做什么·做到什么程度）</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>{{...}}</td><td>{{禁止空话，带角标}}</td><td>{{...}}</td><td>{{...}}</td><td>事实/推断/经验/待验证</td><td>{{...}}</td></tr>
-        </tbody>
-      </table>
-      <div class="selfweak"><strong>只保留一条的话</strong>：{{哪条、为什么}}<br><strong>最可能在 12 个月后失效的一条</strong>：{{哪条、监测什么信号}}</div>
-      <p class="density">本步判据数：{{N}}（下限 8）｜反例：{{N}}</p>
-    </section>
-
-    <!-- ============ 第 4 步 靠谱度评分 ============ -->
-    <section class="section">
-      <h2>第 4 步</h2>
-      <p class="section-intro">锚点：10=一手官方文件明确支持｜7=有第二个独立来源交叉验证｜4=仅有单一从业者经验陈述｜1=纯推测。</p>
-      <table>
-        <thead><tr><th>发现</th><th>分数</th><th>命中锚点</th><th>扣分项</th><th>补什么可加分（具体文件/数据）</th><th>谁有动机让你相信</th><th>最强反证</th><th>状态</th></tr></thead>
-        <tbody>
-          <tr><td>{{...}}</td><td>{{N}}</td><td>{{10/7/4/1}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td><span class="ok">可直接采用</span> / <span class="warn">建议补验证</span> / <span class="risk">待验证</span></td></tr>
-        </tbody>
-      </table>
-      <p class="density">本步判据数：{{N}}（下限 8）｜每个分数必须能由锚点复现（禁止裸评分）</p>
-    </section>
-
-    <!-- ============ 第 5 步 一周学习路线 ============ -->
-    <section class="section">
-      <h2>第 5 步</h2>
-      <p class="section-intro">一周只看最值得看的 5 份资料，并且知道为什么是它们。</p>
-      <table>
-        <thead><tr><th>资料</th><th>发布方 / 时间 / 利益立场</th><th>核心结论</th><th>谁在反驳、反驳得动吗</th><th>数据截止时间</th><th>已过时/被推翻的部分</th><th>读完能回答哪些新问题</th><th>适合哪天看</th><th>产出物</th></tr></thead>
-        <tbody>
-          <tr><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>第 {{N}} 天</td><td>{{可检验物}}</td></tr>
-        </tbody>
-      </table>
-      <div class="callout"><strong>来源品类自检</strong>：官方/一手 {{≥40%}}｜教材 {{≥20%}}｜从业者一手 {{≥20%}}｜反向材料 {{≥10%}}</div>
-      <h3>一周学习路线</h3>
-      <div class="cols">
-        <div class="mini"><strong>第 1 天</strong>{{...}}</div>
-        <div class="mini"><strong>第 2 天</strong>{{...}}</div>
-        <div class="mini"><strong>第 3 天</strong>{{...}}</div>
-        <div class="mini"><strong>第 4 天</strong>{{...}}</div>
-        <div class="mini"><strong>第 5 天</strong>{{...}}</div>
-        <div class="mini"><strong>第 6 天</strong>{{...}}</div>
-        <div class="mini"><strong>第 7 天</strong>{{...}}</div>
-      </div>
-      <p class="density">本步判据数：{{N}}（下限 8）｜每份资料至少 1 个具体判据（年份/版次/章节/编号）</p>
-    </section>
-
-    <!-- ============ 第 6 步 难度标尺定义章节 ============ -->
-    <section class="section">
-      <h2>第 6 步 · 难度标尺</h2>
-      <p class="section-intro">这是整份报告唯一的难度定义处。后面每一步提到「入门 / 专业 / 专家」时，都引用这里的定义，不另行解释。</p>
-      <table>
-        <thead><tr><th>档位</th><th>能力判据</th><th>可检验产出物</th><th>通过线（数字/条件）</th><th>错误容忍度</th><th>典型失败者画像</th><th>判据来源（外部锚定物）</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><span class="tier tier-base">入门</span></td>
-            <td>能复述机制与规则边界，能识别常见误区</td>
-            <td>{{一件能被检验的事/物}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td>
-          </tr>
-          <tr>
-            <td><span class="tier tier-pro">专业</span></td>
-            <td>能独立完成一次标准操作与规范计算</td>
-            <td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td>
-          </tr>
-          <tr>
-            <td><span class="tier tier-exp">专家</span></td>
-            <td>能在信息不全或异常情形下做出判断并说明理由</td>
-            <td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="callout"><strong>本次目标档位</strong>：{{...}}｜<strong>可复现性</strong>：换一个第三方来判定，是否得出同样结论——{{是/否，为什么}}</div>
-      <h3>各档自测题（题型配额：情景 ≥40% / 计算 ≥30% / 概念 ≤30%）</h3>
-      <table>
-        <thead><tr><th>档位</th><th>自测题</th><th>题型</th><th>判分点</th><th>典型错误答案样例</th></tr></thead>
-        <tbody>
-          <tr><td>{{...}}</td><td>{{...}}</td><td>情景/计算/概念</td><td>{{...}}</td><td>{{...}}</td></tr>
-        </tbody>
-      </table>
-      <p class="density">本步判据数：{{N}}（下限 8）｜禁止「能说出…」这类句式而不给通过线</p>
-    </section>
-
-    <!-- ============ 第 7 步 20 小时攻坚 ============ -->
-    <section class="section">
-      <h2>第 7 步</h2>
-      <p class="section-intro">把核心内容压进约 20 小时，并给出一个能检验真实能力的实战项目。</p>
-      <table>
-        <thead><tr><th>时间</th><th>内容</th><th>对应能力点（分配依据）</th><th>产出物（可检验物）</th><th>达标线</th><th>卡住的解锁条件</th></tr></thead>
-        <tbody>
-          <tr><td>{{N-N 小时}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td><td>{{...}}</td></tr>
-        </tbody>
-      </table>
-      <div class="callout">
-        <strong>最小实战项目</strong><br>
-        {{项目描述}}<br><br>
-        <strong>合格标准（写死）</strong>：{{达到什么算过、什么算没过}}<br>
-        <strong>它检验了什么</strong>：① 是否懂基本结构——{{怎么检验}} ② 是否能处理真实案例——{{怎么检验}} ③ 是否能输出自己的初步判断——{{怎么检验}}<br>
-        <strong>失败了怎么办</strong>：{{迭代路径}}
-      </div>
-      <p class="density">本步判据数：{{N}}（下限 8）｜产出物不得只是名词</p>
-    </section>
-
-    <!-- ============ 第 8 步 考官模式 ============ -->
-    <section class="section">
-      <h2>第 8 步</h2>
-      <p class="section-intro">10 题从易到难。若继续互动，可进入考官模式：一次只问一题，答错先讲解再进入下一题，进度会存档。</p>
-      <table>
-        <thead><tr><th>#</th><th>题目</th><th>题型</th><th>考核档位</th><th>对应覆盖清单任务</th><th>判分点</th><th>典型错误答案样例</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>{{...}}</td><td>情景/计算/概念</td><td>{{入门/专业/专家}}</td><td>#{{N}}</td><td>{{过/部分/没过}}</td><td>{{...}}</td></tr>
-        </tbody>
-      </table>
-      <div class="callout"><strong>题型分布自检</strong>：情景 {{≥40%}}｜计算/动手 {{≥30%}}｜概念 {{≤30%}}｜其中能区分「看过」与「会用」的题：至少 3 道</div>
-      <p class="density">题目答案与解题路径：见下方折叠区或附录</p>
-      <div class="code">{{计算题与情景题的参考答案、解题路径}}</div>
-    </section>
-
-    <!-- ============ 第 9 步 费曼讲解 ============ -->
-    <section class="section">
-      <h2>第 9 步</h2>
-      <p class="section-intro">用 12 岁小孩能听懂的话讲一遍。</p>
-      <h3>费曼讲解</h3>
-      <p>{{这是什么 / 为什么存在 / 怎么运转 / 哪里会出错}}</p>
-      <div class="selfweak"><strong>类比的失效边界</strong>：{{这个比喻在什么情况下会误导}}<br><strong>最容易讲错的 3 个地方</strong>：{{...}}</div>
-      <h3>复述模板</h3>
-      <div class="code">{{填空式复述模板，每个空对应一个知识点}}</div>
-      <div class="callout"><strong>复述通过标准</strong>：意思准确 + 无事实性错误 + 能说出至少一处「哪里会出错」</div>
-      <p class="density">本步判据数：{{N}}｜反例：{{N}}</p>
-    </section>
-
-    <!-- ============ 第 10 步 速查表 ============ -->
-    <section class="section">
-      <h2>第 10 步</h2>
-      <p class="section-intro">5 分钟能看完的复盘卡片，每条都带数字或条件。</p>
-      <table>
-        <thead><tr><th>项目</th><th>速记内容（必须含数字或条件）</th></tr></thead>
-        <tbody>
-          <tr><td>核心概念</td><td>{{...}}</td></tr>
-          <tr><td>关键角色</td><td>{{...}}</td></tr>
-          <tr><td>关键流程</td><td>{{...}}</td></tr>
-          <tr><td>关键指标</td><td>{{...}}</td></tr>
-          <tr><td>最常见误区</td><td>{{...}}</td></tr>
-          <tr><td>最该优先验证的问题</td><td>{{与覆盖清单未覆盖/部分覆盖项呼应}}</td></tr>
-        </tbody>
-      </table>
-      <div class="selfweak"><strong>如果只记 3 条</strong>：{{哪 3 条、为什么}}<br><strong>最容易被误记的一条</strong>：{{哪条、正确说法}}</div>
-      <div class="callout">{{一句话总括}}</div>
-    </section>
-
-    <!-- ============ 附加提醒（收编自 v1.0 实际产出） ============ -->
-    <section class="section">
-      <h2>附加提醒</h2>
-      <p>{{给初次学习者的针对性提醒，含具体路径建议}}</p>
-    </section>
-
-    <!-- ============ 免责声明（高风险领域强制；非高风险领域删除本节） ============ -->
-    <div class="disclaimer">
-      <strong>免责声明</strong><br>
-      本报告为知识学习与研究方法论材料，<strong>不构成任何投资/法律/医疗/税务建议</strong>。报告不含具体标的代码、价位、仓位数字与买卖时点，所有推演均为模拟与纸面演练。任何实际决策请咨询具备相应资质的专业人士。
-    </div>
-
-    <!-- ============ 参考来源（收编自 v1.0 实际产出，须按品类配额构成） ============ -->
-    <section class="section footnotes">
-      <h2>参考来源</h2>
-      <p class="section-intro">品类配额：官方/一手 ≥40%｜教材 ≥20%｜从业者一手 ≥20%｜反向材料 ≥10%</p>
-      <ol>
-        <li>{{发布方}}，{{文件名}}：<a href="{{URL}}" target="_blank" rel="noopener">{{URL}}</a> <span class="chip">官方/一手</span></li>
-        <li>{{...}} <span class="chip">教材</span></li>
-        <li>{{...}} <span class="chip">从业者一手</span></li>
-        <li>{{...}} <span class="chip">反向材料</span></li>
-      </ol>
-      <div class="footer-note">生成日期：{{YYYY-MM-DD}}｜目标档位：{{...}}｜未覆盖项：{{N}} 条（理由见覆盖率校验）</div>
-    </section>
-
-  </div>
-</body>
-</html>
+.table-scroll{overflow-x:auto} caption{text-align:left;padding:8px 0} details{margin:14px 0} summary{cursor:pointer} .plan{color:var(--muted)}
+</style></head><body><main class="page"><header class="hero"><span class="badge">十步法 v2.0</span><h1>{{领域}}</h1><p class="lead">{{范围、实际用途与本阶段任务；关键事实绑定[n]}}</p><div class="chips"><span class="chip">模式：{{研究与规划 / 持续训练}}</span><span class="chip">目标：{{任务层级}}</span><span class="chip">预算：{{时间与资源}}</span></div><div class="callout">规划内容与已观察表现分别记录；未做的诊断、复验和真实工作评价标为待验证。</div></header>
+<section class="section"><h2>执行导航与证据概览</h2><p>{{当前能力ID、待答任务、下一动作、工作目录进度文件；未来单元标计划}}</p><div class="table-scroll"><table><thead><tr><th scope="col">能力ID/任务</th><th scope="col">先修</th><th scope="col">教学/示范</th><th scope="col">练习</th><th scope="col">评价/关键错误</th><th scope="col">规划状态/缺口</th></tr>
+</thead>
+<tbody><tr><td>{{T01/目标任务}}</td><td>{{先修}}</td><td>{{对应单元}}</td><td>{{引导与独立}}</td><td>{{任务条件与判据}}</td><td>{{完整/部分/未规划；仅规划，非用户通过}}</td></tr>
+</tbody>
+</table></div><div class="table-scroll"><table><thead><tr><th scope="col">对象</th><th scope="col">已观察证据</th><th scope="col">未验证与限制</th></tr>
+</thead>
+<tbody><tr><td>{{规划/即时/保持/迁移/真实工作}}</td><td>{{实际产物与记录；研究模式未观察}}</td><td>{{不能推出的能力与下一验证}}</td></tr>
+</tbody>
+</table></div></section>
+<section class="section" id="step-1"><h2>第1步 · 目标与能力标准</h2><p>{{终点任务、外部依据、产物、条件、关键错误、预算；范围外任务}}</p><div class="table-scroll"><table><thead><tr><th scope="col">能力ID</th><th scope="col">层级与判据</th><th scope="col">工具/资料/AI条件</th><th scope="col">先修与资源</th></tr>
+</thead>
+<tbody><tr><td>{{T01}}</td><td>{{任务标准}}</td><td>{{条件}}</td><td>{{依赖/即时资源}}</td></tr>
+</tbody>
+</table></div></section>
+<section class="section" id="step-2"><h2>第2步 · 起点与先修诊断</h2><p>{{诊断任务与先修依赖；研究模式待诊断}}</p><div class="table-scroll"><table><thead><tr><th scope="col">诊断任务</th><th scope="col">用户原答案/产物</th><th scope="col">支持量</th><th scope="col">观察/误解</th><th scope="col">补先修动作</th></tr>
+</thead>
+<tbody><tr><td>{{任务}}</td><td>{{真实记录或未观察}}</td><td>{{实际提示}}</td><td>{{依据}}</td><td>{{补课}}</td></tr>
+</tbody>
+</table></div></section>
+<section class="section" id="step-3"><h2>第3步 · 最小领域地图与核心机制</h2><p>{{最小概念关系与流程，必要机制、术语解释、类比边界；依据[n]}}</p><div class="callout">{{短解释/回忆检查与对应资源，实际回答另记}}</div></section>
+<section class="section" id="step-4"><h2>第4步 · 标准任务示范</h2><p>{{完整核验示范：前提、正确产物、步骤、关键选择理由与检查[n]}}</p><div class="counter">{{误用情境或典型错误}}</div></section>
+<section class="section" id="step-5"><h2>第5步 · 引导练习与指导渐撤</h2><div class="table-scroll"><table><thead><tr><th scope="col">练习阶段</th><th scope="col">用户要完成什么</th><th scope="col">可用提示</th><th scope="col">撤去支持依据</th><th scope="col">实际记录</th></tr>
+</thead>
+<tbody><tr><td>{{跟做/补全/相似独做}}</td><td>{{产物}}</td><td>{{分层支持}}</td><td>{{表现条件}}</td><td>{{未观察或记录ID}}</td></tr>
+</tbody>
+</table></div></section>
+<section class="section" id="step-6"><h2>第6步 · 独立实践与反馈补救</h2><div class="table-scroll"><table><thead><tr><th scope="col">独立任务/条件</th><th scope="col">判据/关键错误</th><th scope="col">用户产物</th><th scope="col">结果与依据</th><th scope="col">补救和新任务</th></tr>
+</thead>
+<tbody><tr><td>{{任务}}</td><td>{{标准}}</td><td>{{真实或未观察}}</td><td>{{有限判断}}</td><td>{{动作}}</td></tr>
+</tbody>
+</table></div></section>
+<section class="section" id="step-7"><h2>第7步 · 变式、证据与批判判断</h2><p>{{表面不同而机制相同、相似而方法不同的任务与边界}}</p><div class="table-scroll"><table><thead><tr><th scope="col">断言/类型</th><th scope="col">直接来源</th><th scope="col">为何支持</th><th scope="col">限制/反证</th><th scope="col">待确认</th></tr>
+</thead>
+<tbody><tr><td>{{知识断言}}</td><td>{{[n]版本}}</td><td>{{方法与相关性}}</td><td>{{冲突/范围}}</td><td>{{缺口}}</td></tr>
+</tbody>
+</table></div><div class="selfweak">{{角色与争议仅在任务需要且有来源时加入；否则说明不适用}}</div></section>
+<section class="section" id="step-8"><h2>第8步 · 综合评价与陌生任务</h2><div class="table-scroll"><table><thead><tr><th scope="col">能力ID/陌生任务</th><th scope="col">允许工具/AI</th><th scope="col">通过依据与典型错误</th><th scope="col">用户产物</th><th scope="col">实际结果/限制</th></tr>
+</thead>
+<tbody><tr><td>{{任务}}</td><td>{{预先条件}}</td><td>{{核验参考与等价解}}</td><td>{{未观察或路径}}</td><td>{{关键能力分别判定}}</td></tr>
+</tbody>
+</table></div><details><summary>教师参考与评分依据（独立考核前另存，不向学习者提供）</summary><p>{{核验解法/判据，交付学习者考核材料时移除此答案区}}</p></details>
+</section>
+<section class="section" id="step-9"><h2>第9步 · 延迟复验与自我解释</h2><div class="table-scroll"><table><thead><tr><th scope="col">能力ID</th><th scope="col">保持目标</th><th scope="col">复验计划与依据</th><th scope="col">实际结果</th><th scope="col">状态调整</th></tr>
+</thead>
+<tbody><tr><td>{{T01}}</td><td>{{保持期限}}</td><td>{{可调日期/任务；非自动提醒}}</td><td>{{未来保持待验证}}</td><td>{{按表现调整}}</td></tr>
+</tbody>
+</table></div><p>{{用户从记忆解释原因、方法与失效条件；口头/图示/公式/操作按目标选择}}</p></section>
+<section class="section" id="step-10"><h2>第10步 · 工作支持与持续成长</h2><div class="table-scroll"><table><thead><tr><th scope="col">工作任务/误区</th><th scope="col">速查条件与版本</th><th scope="col">需核验/求助信号</th><th scope="col">来源</th></tr>
+</thead>
+<tbody><tr><td>{{个人重点}}</td><td>{{条件}}</td><td>{{信号}}</td><td>{{[n]}}</td></tr>
+</tbody>
+</table></div><p>{{作品与反馈、未验证能力、下一阶段任务/先修/资源}}</p></section>
+<section class="section"><h2>适用边界与来源</h2><p>{{领域实际决策、现场操作或资格/监督边界；无需要时删去对应段}}</p><ol><li>{{[1]来源、版本/日期、支持内容与可核验链接}}</li></ol><p class="footer-note">版本2.0｜{{实际更新日期}}｜{{已观察与待验证范围}}</p></section>
+</main>
+</body></html>

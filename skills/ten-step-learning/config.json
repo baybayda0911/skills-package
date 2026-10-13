@@ -1,7 +1,7 @@
 {
   "name": "ten-step-learning",
-  "description": "按十步法为任意专业或行业领域生成完整学习方案。当用户说「按十步法带我学 XX」「用十步法拆解 XX 领域」「系统性快速入门/学透某个专业或行业」「对标从业者水平」时调用。产出两阶段：速览骨架（含覆盖率校验与确认三问）与精研报告（自包含 HTML），覆盖三档难度（入门/专业/专家）、考官模式与费曼复述。",
-  "version": "1.1",
+  "description": "用十步法建立专业学习路径，并按任务证据开展持续训练。用户说“按十步法带我学”“用十步法拆解”“ten-step learning”或要求系统学习、练习与复验时使用；区分研究规划和持续训练，不用于单个知识问答或代做考核。",
+  "version": "2.0",
   "language": "zh",
   "entry": "SKILL.md",
   "references": [
@@ -9,7 +9,8 @@
     "references/证据规则.md",
     "references/各步必答问题清单.md",
     "references/领域适配.md",
-    "references/交互与状态.md"
+    "references/交互与状态.md",
+    "references/设计规范.md"
   ],
   "assets": [
     "assets/骨架模板.html",
