@@ -102,74 +102,12 @@
       border:1px solid #cfe0ff;background:var(--soft);
     }
     .footnotes{margin-top:22px;font-size:13px;color:var(--muted)}
-</style></head><body>
-<div class="page">
 
-  <div class="hero">
-    <span class="badge">十步法 v2.5.2 · 进度地图</span>
-    <h1>{{领域}} · 学习进度地图</h1>
-    <p class="lead">{{一句话说明：学习者、日期、切片依据（数据取自 学习进度_&lt;领域&gt;.md）}}</p>
+.table-scroll{overflow-x:auto;max-width:100%} table{width:100%;border-collapse:collapse} th,td{padding:10px;text-align:left;vertical-align:top;overflow-wrap:anywhere;border-bottom:1px solid #dbe3ef} .page{max-width:1280px;margin:auto;padding:24px;min-width:0} nav{line-height:2;overflow-wrap:anywhere} .section{margin:24px 0} .chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center} .chip{max-width:100%} @media(max-width:700px){.page{padding:14px} th,td{min-width:110px} h1{overflow-wrap:anywhere}}
+</style></head><body><main class="page">
+<header class="hero"><span class="badge">十步法 v3.0 · 进度地图</span><h1>{{领域}} · 学习进度地图</h1><p class="lead">{{切片日期}} 的快照；当前事实来源为用户工作目录的学习进度文件。</p><p>当前位置：{{板块/单元/小节}}｜下一动作：{{动作}}</p><p>四档互斥计数：未开始{{n}} / 已输入{{n}} / 已练{{n}} / 历史已通过{{n}}，共{{K}}小节。</p><p>并列标记：待复验{{n}} / 需补救{{n}} / 待复核{{n}}；标记与四档可重叠，不当作新增小节。</p></header><section class="section"><h2>板块与节点</h2><p>绿色表示历史结业且当前无相关未解决缺口；历史曾通过但现在需补救的节点显示警示，历史记录保留。编号放色块，名称与状态另列。</p><div class="chips"><span class="chip s-todo" aria-label="{{小节ID与可见状态}}">{{小节ID}}</span><span>{{名称｜历史四档｜当前保持/需补救/待复核}}</span></div><div class="table-scroll"><table><thead><tr><th scope="col">板块/单元/小节ID</th><th scope="col">名称/层级</th><th scope="col">能力ID/配置</th><th scope="col">先修ID/建议路线</th><th scope="col">历史四档/当前标记</th><th scope="col">证据A/E ID</th></tr></thead><tbody><tr><td>{{B1/1.1/1.1.1}}</td><td>{{名称/层级}}</td><td>{{T01/P…}}</td><td>{{必要先修/下一动作}}</td><td>{{未开始/已输入/已练/已通过；需补救等并列}}</td><td>{{实际ID或未观察}}</td></tr></tbody></table></div></section>
+<section class="section"><h2>结业与当前有效达成</h2><div class="table-scroll"><table><thead><tr><th scope="col">范围/节点</th><th scope="col">必需能力/单元当前可用</th><th scope="col">对应检验通过</th><th scope="col">历史结业记录</th><th scope="col">当前有效达成/缺口</th></tr></thead><tbody><tr><td>{{小节/单元/板块ID}}</td><td>{{逐项证据或不足}}</td><td>{{E ID与实际判定或未发生}}</td><td>{{日期与原条件，保留}}</td><td>{{按交互规则合取；相关失败不显示绿色有效达成}}</td></tr></tbody></table></div><p>单元＝必需小节当前可用 AND 单元检验通过；板块＝所辖必需单元结业 AND 板块综合通过。仅全部小节曾通过不足以点亮板块。</p></section>
+<section class="section"><h2>实际证据与当前缺口</h2><div class="table-scroll"><table><thead><tr><th scope="col">能力ID</th><th scope="col">历史即时独立</th><th scope="col">当前保持</th><th scope="col">迁移</th><th scope="col">真实工作</th><th scope="col">当前缺口/证据</th></tr></thead><tbody><tr><td>{{T01}}</td><td>{{日期/结果/条件或未观察}}</td><td>{{待验证/实际通过或失败/日期}}</td><td>{{待验证/实际结果}}</td><td>{{待验证/实际结果}}</td><td>{{需补救或待复核/A ID}}</td></tr></tbody></table></div><p>{{E检验与A产物记录的对应、当前补救路线}}</p></section>
+<section class="section"><h2>说明</h2><p>{{切片日期}}｜首次生成一次，以后仅在用户要求时更新。Markdown进度文件为当前来源。只报状态、计数和坐标，不压缩为总完成率、等级或徽章。</p></section>
 
-    <div class="overview">
-      <div class="metric"><div class="k">当前位置</div><div class="v">{{B板块 › 中单元 › 小节}}</div></div>
-      <div class="metric"><div class="k">已通过 ∕ 共</div><div class="v">{{n}} ∕ {{K}}</div></div>
-      <div class="metric"><div class="k">下一站</div><div class="v">{{编号与名称}}</div></div>
-      <div class="metric"><div class="k">里程碑</div><div class="v">{{已点亮板块 / 未点亮}}</div></div>
-    </div>
-
-    <div class="bar" role="img" aria-label="按状态分段的进度条">
-      <span class="b-ok" style="width:{{通过占比}}%"></span>
-      <span class="b-prac" style="width:{{已练占比}}%"></span>
-      <span class="b-in" style="width:{{已输入占比}}%"></span>
-    </div>
-
-    <div class="legend">
-      <span><i style="background:#e9f7ef;border:1px solid #157347"></i>已通过</span>
-      <span><i style="background:#fff7e6;border:1px solid #d99a00"></i>已练 / 部分</span>
-      <span><i style="background:#eef4ff;border:1px solid #5d85ff"></i>已输入未检验</span>
-      <span><i style="background:#eef2f7;border:1px solid #98a2b3"></i>未开始</span>
-      <span><i style="background:#e9f7ef;border:1px dashed #157347"></i>待复验</span>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>板块与节点</h2>
-    <p>里程碑＝大板块；一级节点＝中单元；二级节点＝小节（最小可打勾单元）。色块承载编号与短名，完整名称、层级、能力ID 与证据见进度文件的索引表。</p>
-
-    <div class="board">
-      <div class="unit">
-        <div class="unit-head"><span class="id">B{{n}} {{板块名}}</span><span class="cnt">里程碑 · 已通过 {{n}}∕{{n}}</span></div>
-        <div class="unit-head" style="margin-top:6px"><span class="cnt">一级节点 {{n}}.{{n}} {{中单元名}} · {{n}}∕{{n}}</span></div>
-        <div class="chips">
-          <span class="chip s-done" title="{{小节名称}}"><span class="n">{{n.n.n}}</span><span class="t">{{短名}}</span></span>
-          <span class="chip s-todo" title="{{小节名称}}"><span class="n">{{n.n.n}}</span><span class="t">{{短名}}</span></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout"><strong>下一站</strong>：{{编号与名称}}｜{{为什么是它（先修已满足 / 板块收尾 / 复验到期）}}</div>
-  </div>
-
-  <div class="section">
-    <h2>节点达成记录</h2>
-    <table>
-      <thead><tr><th>日期</th><th>层级</th><th>名称</th><th>达成依据</th></tr></thead>
-      <tbody>
-        <tr><td>{{YYYY-MM-DD}}</td><td>{{二级 / 一级 / 里程碑}}</td><td>{{编号与名称}}</td><td>{{证据ID与判定；里程碑须列全部小节状态}}</td></tr>
-      </tbody>
-    </table>
-    <p class="footnotes">点亮条件：该节点下<b>全部小节</b>为“已通过”或“已通过·待复验”。里程碑文本只能是事实陈述，不使用等级、徽章或打卡机制。</p>
-  </div>
-
-  <div class="section">
-    <h2>说明与依据</h2>
-    <ol class="footnotes">
-      <li>本图是 <b>{{YYYY-MM-DD}}</b> 的切片，数据取自用户工作目录的 <b>学习进度_{{领域}}.md</b>；首次交付生成一次，此后仅在用户要求时更新。</li>
-      <li>状态口径见技能参考文件 <b>references/交互与状态.md §9</b>；不报“完成度百分比”，只报计数与坐标。</li>
-      <li>{{外部验证要求 / 适用边界 / 免责声明}}</li>
-    </ol>
-    <p class="footnotes">生成自 ten-step-learning · 版本2.5.2｜{{YYYY-MM-DD}}</p>
-  </div>
-
-</div>
-</body></html>
+</main></body></html>
