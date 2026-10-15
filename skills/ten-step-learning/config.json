@@ -1,7 +1,7 @@
 {
   "name": "ten-step-learning",
   "description": "用十步法建立专业学习路径，并按任务证据开展持续训练。用户说“按十步法带我学”“用十步法拆解”“ten-step learning”或要求系统学习、练习与复验时使用；区分研究规划和持续训练，不用于单个知识问答或代做考核。",
-  "version": "2.0",
+  "version": "2.5.2",
   "language": "zh",
   "entry": "SKILL.md",
   "references": [
@@ -15,6 +15,7 @@
   "assets": [
     "assets/骨架模板.html",
     "assets/报告模板.html",
+    "assets/进度地图模板.html",
     "assets/学习进度模板.md"
   ]
 }
